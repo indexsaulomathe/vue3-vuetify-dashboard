@@ -1,5 +1,13 @@
 {
+  "htmlWhitespaceSensitivity": "ignore",
+  "vueIndentScriptAndStyle": false,
+  "ignorePath": ".gitignore",
+  "endOfLine": "auto",
+  "semi": false,
   "singleQuote": true,
-  "trailingComma": "all",
-  "printWidth": 100
+  "tabWidth": 2,
+  "trailingComma": "none",
+  "arrowParens": "always",
+  "jsxBracketSameLine": false,
+  "printWidth": 120
 }

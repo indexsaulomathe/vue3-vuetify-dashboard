@@ -4,7 +4,7 @@
  * ESLint configuration file.
  */
 
-module.exports = {
+export default {
   root: true,
   env: {
     node: true,
@@ -22,7 +22,12 @@ module.exports = {
   },
   rules: {
     'vue/multi-word-component-names': 'off',
-    'prettier/prettier': 'error',
+    "prettier/prettier": [
+      "error",
+      {
+        "usePrettierrc": true
+      }
+    ],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },

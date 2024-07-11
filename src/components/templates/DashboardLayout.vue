@@ -1,11 +1,11 @@
 <template>
   <v-container fluid class="dashboard-layout">
     <v-row class="dashboard-content">
-      <v-col cols="12">
-        <DashboardHeader />
-      </v-col>
-      <v-col cols="12" md="3">
+      <v-col cols="3" md="3" fill-height>
         <DashboardSidebar />
+      </v-col>
+      <v-col cols="9">
+        <DashboardHeader />
       </v-col>
 
       <v-col cols="12" md="9">

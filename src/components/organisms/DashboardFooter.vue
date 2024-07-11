@@ -1,5 +1,5 @@
 <template>
-    <v-footer app>
+    <v-footer app color="primary">
         <span>&copy; {{ new Date().getFullYear() }} Seu Projeto</span>
         <v-spacer></v-spacer>
         <span>Links úteis</span>

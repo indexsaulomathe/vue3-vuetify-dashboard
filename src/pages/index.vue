@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import DashboardLayout from '@/layouts/DashboardLayout.vue';
+import DashboardLayout from '@/components/templates/DashboardLayout.vue';
 import UserInfoPanel from '@/components/organisms/UserInfoPanel.vue';
 </script>
 

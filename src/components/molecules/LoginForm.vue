@@ -11,7 +11,7 @@
                             <v-text-field v-model="password" label="Password" outlined prepend-icon="mdi-lock"
                                 type="password" required />
                             <div class="d-flex justify-end">
-                                <v-btn size="x-small" text color="info" class="text-caption  mb-4"
+                                <v-btn size="x-small" text color="info" class="text-caption mb-4"
                                     @click="recoverPassword">
                                     Esqueceu a senha?
                                 </v-btn>
@@ -28,18 +28,24 @@
     </v-container>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script setup>
+import { ref, defineEmits } from 'vue';
+import router from '@/router/index';
 
+const emit = defineEmits(['show-password-reset']);
 const username = ref('');
 const password = ref('');
 
-const login = () => {
-    console.log('Logging in with:', username.value, password.value);
+const recoverPassword = () => {
+    emit('show-password-reset');
 };
 
-const recoverPassword = () => {
-    console.log('Password recovery clicked');
+const login = () => {
+    const loginSuccessful = true;
+
+    if (loginSuccessful) {
+        router.push('/');
+    }
 };
 </script>
 

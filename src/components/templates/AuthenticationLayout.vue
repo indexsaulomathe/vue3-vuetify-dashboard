@@ -17,7 +17,7 @@ const props = defineProps<{
 
 const backgroundStyle = computed(() => ({
     backgroundImage: props.backgroundImage ? `url(${props.backgroundImage})` : '',
-    backgroundColor: props.backgroundImage ? '' : '#96989e',
+    backgroundColor: props.backgroundImage ? '' : 'var(--color-background)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     height: '100vh',

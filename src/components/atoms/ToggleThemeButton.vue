@@ -1,46 +1,67 @@
 <template>
-    <v-btn :dark="selectedTheme === 'dark'" icon @click="toggleTheme()" class="theme-toggle-btn">
-        <v-icon>{{ selectedTheme === 'dark' ? 'mdi-moon-waning-crescent ' : 'mdi-white-balance-sunny' }}</v-icon>
+    <v-btn :dark="selectedTheme === 'dark'" icon @click="toggleTheme()" class="theme-toggle-btn"
+        :class="{ 'theme-toggle-btn-float': floating }">
+        <v-icon>
+            {{ selectedTheme === 'dark' ? 'mdi-moon-waning-crescent ' : 'mdi-white-balance-sunny' }}
+        </v-icon>
     </v-btn>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useTheme } from 'vuetify';
 
-const theme = useTheme();
-const selectedTheme = ref('light');
+const props = defineProps({
+    floating: Boolean
+});
 
+const theme = useTheme();
+const selectedTheme = ref(localStorage.getItem('selectedTheme') || 'light');
+
+// Function to toggle the theme
 const toggleTheme = () => {
     selectedTheme.value = selectedTheme.value === 'dark' ? 'light' : 'dark';
-    theme.global.name.value = selectedTheme.value; // Aplica o tema selecionado
+    theme.global.name.value = selectedTheme.value;
+    localStorage.setItem('selectedTheme', selectedTheme.value);
 };
 
+// Apply the saved theme on component mount
+onMounted(() => {
+    theme.global.name.value = selectedTheme.value;
+});
+
+// Conditional classes for the floating button
+const classes = computed(() => ({
+    'theme-toggle-btn': !props.floating,
+    'theme-toggle-btn-float': props.floating
+}));
 
 </script>
 
 <style scoped>
 .theme-toggle-btn {
-    background-color: opacity(white, 0.7);
-    /* Fundo branco padrão */
+    /* Default white background */
     padding: 0;
-    /* Remove o espaçamento interno */
+    /* Remove internal padding */
     transition: transform 0.3s, opacity 0.3s;
-    /* Transições suaves para transformação e opacidade */
+    /* Smooth transitions for transform and opacity */
+}
+
+.theme-toggle-btn-float {
     position: fixed;
-    /* Posição fixa para flutuar */
+    /* Fixed position for floating */
     top: 20px;
-    /* Distância do topo da página */
+    /* Distance from the top of the page */
     right: 20px;
-    /* Distância da borda direita da página */
-    z-index: 1000;
-    /* Z-index alto para estar acima de outros elementos */
+    /* Distance from the right edge of the page */
+    z-index: 2000;
+    /* High z-index to be above other elements */
 }
 
 .theme-toggle-btn:hover {
     transform: scale(1.1);
-    /* Efeito de escala ao passar o mouse */
+    /* Scale effect on hover */
     opacity: 1;
-    /* Opacidade total ao passar o mouse */
+    /* Full opacity on hover */
 }
 </style>

@@ -8,11 +8,11 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/organisms/AppFooter.vue')['default']
-    AuthenticationLayout: typeof import('./components/layouts/AuthenticationLayout.vue')['default']
+    AuthenticationLayout: typeof import('./components/templates/AuthenticationLayout.vue')['default']
     Button: typeof import('./components/atoms/Button.vue')['default']
     DashboardFooter: typeof import('./components/organisms/DashboardFooter.vue')['default']
     DashboardHeader: typeof import('./components/organisms/DashboardHeader.vue')['default']
-    DashboardLayout: typeof import('./components/layouts/DashboardLayout.vue')['default']
+    DashboardLayout: typeof import('./components/templates/DashboardLayout.vue')['default']
     DashboardSidebar: typeof import('./components/organisms/DashboardSidebar.vue')['default']
     Default: (typeof import('./components/templates/default.vue'))['default']
     ExampleComponent: typeof import('./components/atoms/ExampleComponent.vue')['default']
